@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank System Functions</title>
+  <link rel="stylesheet" href="functions.css">
+</head>
+<body>
+
+<header> Bank System Project - Functions Showcase</header>
+<section class="page-intro">
+  <h2>Functions Overview</h2>
+  <p>
+    This page presents the core functions of the Bank System project.
+    Each function demonstrates a specific feature such as account creation,
+    money transactions, security rules, and activity monitoring.
+    The goal is to show how the system handles real banking operations
+    in a clear and structured way.
+  </p>
+</section>
+
+<div class="functions-container">
+
+  <!-- Function 1 -->
+  <div class="function-card">
+    <button class="accordion">Create New Bank Account</button>
+    <div class="panel">
+      <pre><code>
+let accountCounter = 1000000000;
+
+function createAccount(data) {
+  if (!data.firstName || !data.lastName) return "First name and last name are required";
+  if (data.initialDeposit < 50) return "Initial deposit must be at least $50";
+  accountCounter++;
+  return {
+    accountNumber: accountCounter.toString(),
+    firstName: data.firstName,
+    lastName: data.lastName,
+    balance: data.initialDeposit,
+    status: "ACTIVE",
+    transactions: [],
+    createdAt: new Date().toISOString()
+  };
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 2 -->
+  <div class="function-card">
+    <button class="accordion">Deposit Money</button>
+    <div class="panel">
+      <pre><code>
+function deposit(account, amount) {
+  if (amount <= 0) return "Deposit amount must be positive";
+  account.balance += amount;
+  account.transactions.push({
+    type: "DEPOSIT",
+    amount: amount,
+    date: new Date().toISOString(),
+    newBalance: account.balance
+  });
+  return account;
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 3 -->
+  <div class="function-card">
+    <button class="accordion">Withdraw with Overdraft Protection</button>
+    <div class="panel">
+      <pre><code>
+function withdraw(account, amount) {
+  if (amount <= 0) return "Invalid withdrawal amount";
+  if (amount > account.balance) {
+    account.balance -= 5;
+    account.transactions.push({
+      type: "OVERDRAFT_ATTEMPT",
+      amount: amount,
+      penalty: 5,
+      date: new Date().toISOString()
+    });
+    return "Insufficient funds";
+  }
+  account.balance -= amount;
+  account.transactions.push({
+    type: "WITHDRAWAL",
+    amount: amount,
+    date: new Date().toISOString(),
+    newBalance: account.balance
+  });
+  return account;
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 4 -->
+  <div class="function-card">
+    <button class="accordion">Transfer Between Accounts</button>
+    <div class="panel">
+      <pre><code>
+function transfer(fromAccount, toAccount, amount) {
+  if (amount <= 0) return "Invalid transfer amount";
+  if (fromAccount.balance < amount) return "Insufficient funds";
+  fromAccount.balance -= amount;
+  toAccount.balance += amount;
+  fromAccount.transactions.push({
+    type: "TRANSFER_OUT",
+    to: toAccount.accountNumber,
+    amount: amount,
+    date: new Date().toISOString()
+  });
+  toAccount.transactions.push({
+    type: "TRANSFER_IN",
+    from: fromAccount.accountNumber,
+    amount: amount,
+    date: new Date().toISOString()
+  });
+  return [fromAccount, toAccount];
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 5 -->
+  <div class="function-card">
+    <button class="accordion">Monthly Interest (Savings)</button>
+    <div class="panel">
+      <pre><code>
+function applyMonthlyInterest(account) {
+  if (account.type !== "SAVINGS" || account.balance <= 500) return account;
+  const interest = account.balance * 0.00167;
+  account.balance += interest;
+  account.transactions.push({
+    type: "INTEREST",
+    amount: Number(interest.toFixed(2)),
+    date: new Date().toISOString()
+  });
+  return account;
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 6 -->
+  <div class="function-card">
+    <button class="accordion">Get Transactions By Date & Type</button>
+    <div class="panel">
+      <pre><code>
+function getTransactions(account, options) {
+  let result = account.transactions;
+  result = result.filter(t => {
+    const d = new Date(t.date);
+    return d >= new Date(options.startDate) && d <= new Date(options.endDate);
+  });
+  if (options.type) result = result.filter(t => t.type === options.type);
+  result.sort((a, b) => new Date(b.date) - new Date(a.date));
+  return result;
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 7 -->
+  <div class="function-card">
+    <button class="accordion">Freeze / Unfreeze Account</button>
+    <div class="panel">
+      <pre><code>
+function manageAccountStatus(account, action, managerId) {
+  if (action === "FREEZE" && !managerId) return "Manager approval required";
+  if (!account.statusHistory) account.statusHistory = [];
+  if (action === "FREEZE") account.status = "FROZEN";
+  if (action === "UNFREEZE") account.status = "ACTIVE";
+  account.statusHistory.push({
+    action: action,
+    by: managerId || "system",
+    date: new Date().toISOString()
+  });
+  return account;
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 8 -->
+  <div class="function-card">
+    <button class="accordion">Daily Withdrawal Limit ($500)</button>
+    <div class="panel">
+      <pre><code>
+function withdrawWithDailyLimit(account, amount) {
+  const DAILY_LIMIT = 500;
+  const today = new Date().toISOString().split("T")[0];
+  let totalToday = 0;
+  account.transactions.forEach(t => {
+    if (t.type === "WITHDRAWAL" && t.date.split("T")[0] === today) totalToday += t.amount;
+  });
+  if (totalToday + amount > DAILY_LIMIT) return "Error: Daily withdrawal limit exceeded ($500 max)";
+  account.balance -= amount;
+  account.transactions.push({
+    type: "WITHDRAWAL",
+    amount: amount,
+    date: new Date().toISOString(),
+    newBalance: account.balance
+  });
+  return account;
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 9 -->
+  <div class="function-card">
+    <button class="accordion">Validate Password</button>
+    <div class="panel">
+      <pre><code>
+function validatePassword(password) {
+  let reasons = [];
+  if (password.length < 12) reasons.push("Password must be at least 12 characters");
+  if (!/[A-Z]/.test(password)) reasons.push("Missing uppercase letter");
+  if (!/[a-z]/.test(password)) reasons.push("Missing lowercase letter");
+  if (!/[0-9]/.test(password)) reasons.push("Missing number");
+  if (!/[!@#$%^&*]/.test(password)) reasons.push("Missing special character");
+  const common = ["123456", "password", "qwerty"];
+  if (common.includes(password)) reasons.push("Password is too common");
+  return reasons.length === 0 ? { valid: true } : { valid: false, reasons: reasons };
+}
+      </code></pre>
+    </div>
+  </div>
+
+  <!-- Function 10 -->
+  <div class="function-card">
+    <button class="accordion">Suspicious Activity Detection</button>
+    <div class="panel">
+      <pre><code>
+function checkForSuspiciousActivity(account) {
+  let alerts = [];
+  account.transactions.forEach(t => {
+    if (t.amount > 10000) alerts.push(`High-value transaction: $${t.amount}`);
+  });
+  for (let i = 0; i < account.transactions.length - 2; i++) {
+    const first = new Date(account.transactions[i].date);
+    const third = new Date(account.transactions[i + 2].date);
+    const minutes = (third - first) / (1000 * 60);
+    if (minutes <= 5) {
+      alerts.push("Rapid transactions detected");
+      break;
+    }
+  }
+  return { isSuspicious: alerts.length > 0, alerts: alerts };
+}
+      </code></pre>
+    </div>
+  </div>
+
+</div>
+
+<script src="functions.js"></script>
+</body>
+</html>

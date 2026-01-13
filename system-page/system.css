@@ -1,0 +1,154 @@
+/* ====== Global ====== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #F5F3EE; /* Soft neutral background */
+  color: #1F1D19; /* Dark text for readability */
+  margin: 0;
+  padding: 20px;
+}
+
+/* ====== Header ====== */
+header {
+  text-align: center;
+  padding: 20px;
+  background: #1F1D19; /* Primary brand color */
+  color: #FFFFFF;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* ====== Navbar / Tabs ====== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.navbar button {
+  padding: 10px 20px;
+  background: #1F1D19; /* Primary brand color */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.navbar button:hover {
+  background: #3A382F; /* Slightly lighter/darker shade for hover */
+  transform: scale(1.05);
+}
+
+/* ====== Intro Card ====== */
+.intro {
+  background: #E0DED8; /* Soft secondary background */
+  color: #1F1D19;
+  padding: 20px;
+  border-left: 6px solid #1F1D19; /* Primary brand color accent */
+  border-radius: 10px;
+  margin-bottom: 25px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.intro h2 {
+  margin-top: 0;
+  color: #1F1D19;
+}
+
+.intro ul {
+  margin-left: 20px;
+}
+
+.intro ul li {
+  margin-bottom: 5px;
+}
+
+/* ====== Cards / Containers ====== */
+.card {
+  background: #FFFFFF;
+  padding: 20px;
+  margin: 15px auto;
+  width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card h2, .card h3 {
+  margin-top: 0;
+  color: #1F1D19;
+}
+
+/* ====== Inputs & Buttons ====== */
+input {
+  width: calc(100% - 16px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-top: 5px;
+  background: #1F1D19; /* Primary brand color */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button:hover {
+  background: #3A382F; /* Hover shade */
+  transform: scale(1.03);
+}
+
+/* ====== Account Info ====== */
+.account-details {
+  background: #E0DED8; /* Secondary soft background */
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.account-details .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.account-details .row:last-child {
+  border-bottom: none;
+}
+
+/* ====== Transactions / Alerts ====== */
+.transactions {
+  background: #FFF8E1; /* Soft yellow alert card */
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.transactions .tx {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transactions .tx:last-child {
+  border-bottom: none;
+}
+
+.transactions .alert {
+  color: #D9534F; /* Red alerts */
+  font-weight: bold;
+}

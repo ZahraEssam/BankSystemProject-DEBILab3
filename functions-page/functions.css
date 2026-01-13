@@ -1,0 +1,183 @@
+/* ====== Global ====== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #FEFCFA; /* Very soft light background */
+  color: #3E2F28; /* Dark text but soft */
+  margin: 0;
+  padding: 20px;
+}
+
+/* ====== Header ====== */
+header {
+  text-align: center;
+  padding: 22px;
+  background-color: #FEFCFA; /* Light for body harmony */
+  color: #734a3c; /* Dark brand color for title only */
+  font-size: 1.9rem;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: color 0.3s ease;
+}
+
+header:hover {
+  color: #5c392f; /* Darker shade on hover */
+}
+
+
+/* ====== Page Introduction ====== */
+.page-intro {
+  max-width: 900px;
+  margin: 25px auto 35px;
+  padding: 22px 26px;
+  background: #fffaf7; /* Soft cream – very light */
+  border-left: 5px solid #734a3c; /* Brand color, calm accent */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+}
+
+.page-intro h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #734a3c; /* Darker only for title */
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.page-intro p {
+  margin: 0;
+  line-height: 1.7;
+  color: #4b3a33; /* Softer than pure dark */
+  font-size: 0.95rem;
+}
+
+
+/* ====== Navbar / Buttons ====== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.navbar button {
+  padding: 12px 24px;
+  background-color: #734a3c; /* Brand primary */
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.navbar button:hover {
+  background-color: #5c392f; /* Darker on hover */
+  transform: scale(1.03);
+}
+
+/* ====== Function Cards ====== */
+.functions-container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.function-card {
+  background: #fffdfb; /* Very soft cream for card */
+  padding: 18px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03); /* lighter shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.function-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+/* ====== Accordion ====== */
+.accordion {
+  background-color: #734a3c;
+  color: #fff;
+  cursor: pointer;
+  padding: 16px 20px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: left;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.accordion:hover {
+  background-color: #5c392f;
+}
+
+/* ====== Panel / Code Container ====== */
+.panel {
+  padding: 16px 18px;
+  display: none;
+  background-color: #fffaf7; /* Soft cream for contrast */
+  border-top: 1px solid #f0e6e2;
+  border-radius: 0 0 12px 12px;
+}
+
+/* ====== Code Block ====== */
+pre {
+  background: #fff4ef; /* Very soft background */
+  padding: 14px;
+  border-radius: 10px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  color: #3E2F28;
+}
+
+/* ====== Multi Images / Gallery ====== */
+.multi {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.multi img {
+  width: 160px;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.multi img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* ====== Lightbox ====== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.lightbox::after {
+  content: "Click anywhere to close";
+  position: absolute;
+  bottom: 30px;
+  color: #aaa;
+  font-size: 14px;
+}

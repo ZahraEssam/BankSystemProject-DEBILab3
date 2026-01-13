@@ -1,0 +1,97 @@
+/* ===== Global ===== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ===== Header ===== */
+header {
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+  background: #1f1d19; 
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  border-radius: 0 0 15px 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===== Landing Container ===== */
+.landing-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.landing-container h2 {
+  color: #1f2937; 
+  margin-bottom: 50px;
+  font-size: 1.7rem;
+}
+
+/* ===== Buttons ===== */
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.button-group button {
+  padding: 18px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== Color Buttons===== */
+#systemBtn { background: #1f1d19; }
+#functionsBtn { background: #734a3c; }
+#documentBtn { background: #826a73; }
+
+/* Hover effect */
+.button-group button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ====== Bottom Page Spacing ====== */
+body {
+  padding-bottom: 125px;
+}
+
+.main-header {
+  padding: 26px 20px;
+  background-color: #FEFCFA;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.header-content {
+  display: flex;             
+  align-items: center;        
+  justify-content: center;    
+  gap: 14px;      }           
+
+.logo {
+  width: 42px;
+  height: auto;
+}
+
+.header-content h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1f1d19;
+}
+

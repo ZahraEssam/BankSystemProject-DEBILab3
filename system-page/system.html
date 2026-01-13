@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bank System</title>
+  <link rel="stylesheet" href="system.css">
+</head>
+<body>
+
+<header>Bank System</header>
+<div class="intro">
+  <h2>Mini Bank</h2>
+  <p>Try out core banking features in a simple and safe way:</p>
+  <ul>
+    <li>Create account</li>
+    <li>Deposit / Withdraw</li>
+    <li>Transfer money</li>
+    <li>Check transactions</li>
+    <li>Freeze / Unfreeze account</li>
+  </ul>
+  <p><em>For learning only, not real banking.</em></p>
+</div>
+
+
+<!-- Create Account -->
+<div class="card">
+  <h2>Create Account</h2>
+  <input type="text" id="firstName" placeholder="First Name" />
+  <input type="text" id="lastName" placeholder="Last Name" />
+  <input type="password" id="password" placeholder="Password" />
+  <input type="number" id="initialDeposit" placeholder="Initial Deposit ($)" />
+  <button onclick="createAccountUI()">Create Account</button>
+</div>
+
+<!-- Account Actions -->
+<div class="card">
+  <h2>Account Actions</h2>
+
+  <input id="amount" type="number" placeholder="Amount">
+
+  <button onclick="depositUI()">Deposit</button>
+  <button onclick="withdrawUI()">Withdraw</button>
+</div>
+
+<div class="card">
+  <h2>Advanced Actions</h2>
+
+  <button onclick="applyInterestUI()">Apply Monthly Interest</button>
+  <button onclick="freezeUI()">Freeze Account</button>
+  <button onclick="unfreezeUI()">Unfreeze Account</button>
+  <button onclick="showTransactionsUI()">Show Transactions</button>
+  <button onclick="suspiciousCheckUI()">Check Suspicious Activity</button>
+</div>
+
+
+<!-- Account Info -->
+<div class="card">
+  <h2>Account Info</h2>
+  <div id="accountInfo">No account created yet</div>
+</div>
+
+<script src="bank.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
