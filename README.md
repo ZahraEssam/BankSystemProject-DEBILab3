@@ -16,7 +16,7 @@ A **JavaScript-based banking system simulation** that demonstrates core banking 
 - CSS
 
 ## Live Demo
-[Click here to try the project](https://zahraessam.github.io/Bank-System-Project/)
+[Click here to try the project](https://zahraessam.github.io/BankSystemProject-DEBILab3/)
 
 ## Author
 **Zahra Essam**
@@ -24,3 +24,4 @@ A **JavaScript-based banking system simulation** that demonstrates core banking 
 ## Project Info
 - Repository: BankSystemProject-DEBILab3
 - Course / Lab: DEBILab3
+
